@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Candado Inteligente</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Monitoreo de Candado Inteligente IoT</h1>
+  </header>
+
+  <nav id="navbar">
+    <div class="nav-links">
+      <a href="#" class="nav-link active" data-page="page-dashboard">Dashboard</a>
+      <a href="#" class="nav-link" data-page="page-history-mpu">Historial MPU</a>
+      <a href="#" class="nav-link" data-page="page-history-gps">Historial GPS</a>
+      <a href="#" class="nav-link" data-page="page-history-predictions">Predicciones</a>
+    </div>
+    <div class="nav-controls">
+      <span>Predicciones</span>
+      <label class="switch">
+        <input type="checkbox" id="prediction-toggle">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </nav>
+
+  <main>
+    <div id="page-dashboard" class="page active">
+      <div id="map"></div>
+      <div id="sidebar">
+        <section id="status-monitor">
+          <h2>Monitor de Estado (en vivo)</h2>
+          <div id="live-status" class="status-box">Cargando...</div>
+        </section>
+        <section id="lock-control-section">
+            <h2>Control del Candado</h2>
+            <div class="control-container">
+                <button id="lock-control-btn">Cargando...</button>
+                <span id="lock-status-text">Estado: Desconocido</span>
+            </div>
+        </section>
+        <section>
+          <h2>Últimas 5 Posiciones GPS</h2>
+          <table id="gps-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Latitud</th>
+                <th>Longitud</th>
+              </tr>
+            </thead>
+            <tbody><tr><td colspan="3">Cargando...</td></tr></tbody>
+          </table>
+        </section>
+        <section>
+          <h2>Últimos 5 Datos MPU</h2>
+          <table id="mpu-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Ax</th><th>Ay</th><th>Az</th>
+                <th>Gx</th><th>Gy</th><th>Gz</th>
+              </tr>
+            </thead>
+            <tbody><tr><td colspan="7">Cargando...</td></tr></tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+
+    <div id="page-history-mpu" class="page">
+      <div class="history-header">
+        <h2>Historial Completo de Datos MPU</h2>
+        <button id="export-mpu" class="export-btn">Exportar a CSV</button>
+      </div>
+      <div class="table-container">
+        <table id="mpu-history-table">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Ax</th><th>Ay</th><th>Az</th>
+              <th>Gx</th><th>Gy</th><th>Gz</th>
+            </tr>
+          </thead>
+          <tbody><tr><td colspan="7">Cargando...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="page-history-gps" class="page">
+        <div class="history-header">
+            <h2>Historial Completo de Datos GPS</h2>
+            <button id="export-gps" class="export-btn">Exportar a CSV</button>
+        </div>
+        <div class="table-container">
+            <table id="gps-history-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Latitud</th>
+                  <th>Longitud</th>
+                  <th>Altitud</th>
+                  <th>Velocidad</th>
+                </tr>
+              </thead>
+              <tbody><tr><td colspan="5">Cargando...</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="page-history-predictions" class="page">
+        <div class="history-header">
+            <h2>Historial de Predicciones</h2>
+            <button id="export-predictions" class="export-btn">Exportar a CSV</button>
+        </div>
+        <div class="table-container">
+            <table id="predictions-history-table">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Predicción</th>
+                        <th>Probabilidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="3">Cargando...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

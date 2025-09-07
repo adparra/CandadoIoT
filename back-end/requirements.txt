@@ -1,0 +1,13 @@
+# --- Backend y Servidor ---
+fastapi
+uvicorn
+gunicorn
+python-dotenv
+mysql-connector-python
+
+# --- Machine Learning y Ciencia de Datos ---
+pandas
+numpy
+scipy
+scikit-learn
+joblib
